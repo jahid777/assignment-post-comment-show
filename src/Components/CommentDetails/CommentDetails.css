@@ -1,0 +1,7 @@
+.comment__top{
+    display: flex;
+    align-items: center;                   
+}
+.comment__top h3{
+   margin-left: 25px;
+}
