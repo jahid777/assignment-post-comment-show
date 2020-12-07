@@ -8,10 +8,12 @@ import '../CommentDetails/CommentDetails.css';
 const CommentDetails = () => {
   const {postId} = useParams();
  
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
   // console.log(comments);
  
-  const [image, setImage] = useState([])
+  const [image, setImage] = useState([]);
+
+
  
 //   console.log(comments);
   useEffect(()=>{
@@ -22,8 +24,13 @@ const CommentDetails = () => {
     
     fetch("https://randomuser.me/api/?results=10")
     .then(res => res.json())
-    .then(data => setImage(data.results)) //jehetu image ghula shudhu pathabo ar ata loop akare jabe sehetu ar index[0/1/2] set korinay
-  },[])
+    .then(data => {
+      setImage(data.results)
+      console.log(data.results);
+    }) //jehetu data tar por ar vitore result ase and ata 10tay ase sehetu index[0] set korer kono dorkar nay..
+  },[]);
+
+  
 
   let pictures = [];
   for (let i = 0; i < image.length; i++) {
@@ -38,7 +45,7 @@ return (
   <h1> Comments:</h1>
 
   {
-      comments.map((comment,idx) => //akhne useState ar index number ek sathe pathano hoise ar index number o pathano hoise..
+      comments.map((comment,idx) => //akhne useState ar index number ek sathe pathano hoise ar index number  pathano hoise ortht 2ta perametar..
       
           <div>
               <div  className="comment__top">
